@@ -170,7 +170,7 @@
         }
 
         table th {
-            background: var(--primary);
+            background: var(--danger);
             color: white;
             padding: 15px;
             text-align: left;
@@ -229,7 +229,7 @@
         .navbar-brand {
             font-size: 24px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--dark);
             text-decoration: none;
         }
 

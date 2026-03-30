@@ -5,9 +5,9 @@
 @section('content')
 <div style="max-width: 450px; margin: 100px auto;">
     <div class="card" style="text-align: center; padding: 40px;">
-        <div style="margin-bottom: 20px;">
-            <i class="fas fa-school" style="font-size: 60px; color: var(--primary);"></i>
-        </div>
+       <div style="margin-bottom: 20px; text-align: center;">
+    <img src="{{ asset('uploads/logo2.jpeg') }}" alt="Logo Sekolah" style="width: 130px; height: 130px;">
+</div>
         <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 30px; color: var(--dark);">
             Pengaduan Sarana Sekolah
         </h1>
@@ -51,7 +51,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 18px;">
-                <i class="fas fa-sign-in-alt"></i> Login
+                <i class="fas-sign"></i> Login
             </button>
         </form>
 

@@ -47,6 +47,43 @@ class SiswaPengaduanController extends Controller {
         $pengaduan = Pengaduan::where('user_id', session('user_id'))->findOrFail($id);
         return view('siswa.pengaduan.show', compact('pengaduan'));
     }
+    public function edit($id) {
+    $pengaduan = Pengaduan::where('user_id', session('user_id'))->findOrFail($id);
+    return view('siswa.pengaduan.edit', compact('pengaduan'));
+    }
+
+    public function update(Request $request, $id) {
+    $request->validate([
+        'judul' => 'required',
+        'kategori' => 'required',
+        'lokasi' => 'required',
+        'deskripsi' => 'required',
+        'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+    ]);
+
+    $pengaduan = Pengaduan::where('user_id', session('user_id'))->findOrFail($id);
+    
+    $fotoName = $pengaduan->foto;
+    if ($request->hasFile('foto')) {
+    if ($fotoName && file_exists(public_path('uploads/' . $fotoName))) {
+        unlink(public_path('uploads/' . $fotoName));
+    }
+        
+        $file = $request->file('foto');
+        $fotoName = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('uploads'), $fotoName);
+    }
+
+    $pengaduan->update([
+        'judul' => $request->judul,
+        'kategori' => $request->kategori,
+        'lokasi' => $request->lokasi,
+        'deskripsi' => $request->deskripsi,
+        'foto' => $fotoName
+    ]);
+
+    return redirect('/siswa/pengaduan')->with('success', 'Pengaduan berhasil diperbarui!');
+    }
 
     public function delete($id) {
         $pengaduan = Pengaduan::where('user_id', session('user_id'))->findOrFail($id);

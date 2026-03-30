@@ -4,9 +4,10 @@
 
 @section('content')
 <div class="navbar">
-    <a href="/" class="navbar-brand">
-        <i class="fas fa-school"></i> Pengaduan Sekolah
-    </a>
+   <div class="navbar-brand" style="display: flex; align-items: center;">
+    <img src="{{ asset('uploads/logo2.jpeg') }}" alt="Logo Sekolah" style="width: 80px; height: 80px; margin-right: 40px;">
+    <span>Pengaduan Sekolah</span>
+</div>
     <div class="navbar-nav">
         <span class="user-info">
             <div class="user-avatar">
@@ -14,8 +15,7 @@
             </div>
             <span>{{ session('user_name') }}</span>
         </span>
-        <a href="/logout" class="btn btn-danger btn-sm">
-            <i class="fas fa-sign-out-alt"></i> Logout
+        <a href="/logout" class="btn btn-danger btn-sm">Logout
         </a>
     </div>
 </div>
@@ -91,20 +91,23 @@
                             </div>
                         </td>
                         <td>
-                            <div class="action-buttons">
-                                <a href="/siswa/pengaduan/{{ $item->id }}" class="btn btn-sm btn-outline" title="Detail">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a 
-                                    href="/siswa/pengaduan/delete/{{ $item->id }}" 
-                                    class="btn btn-sm btn-danger" 
-                                    title="Hapus"
-                                    onclick="return confirm('Yakin ingin menghapus pengaduan ini?')"
-                                >
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </div>
-                        </td>
+                        <div class="action-buttons">
+                            <a href="/siswa/pengaduan/{{ $item->id }}" class="btn btn-sm btn-outline" title="Detail">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="/siswa/pengaduan/edit/{{ $item->id }}" class="btn btn-sm btn-warning" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a 
+                                href="/siswa/pengaduan/delete/{{ $item->id }}" 
+                                class="btn btn-sm btn-danger" 
+                                title="Hapus"
+                                onclick="return confirm('Yakin ingin menghapus pengaduan ini?')"
+                            >
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="navbar">
-    <a href="/" class="navbar-brand">
-        <i class="fas fa-school"></i> Pengaduan Sekolah (Admin)
-    </a>
+   <div class="navbar-brand" style="display: flex; align-items: center;">
+    <img src="{{ asset('uploads/logo2.jpeg') }}" alt="Logo Sekolah" style="width: 80px; height: 80px; margin-right: 40px;">
+    <span>Pengaduan Sekolah</>
+</div>
     <div class="navbar-nav">
-        <a href="/admin/pengaduan" class="btn btn-outline">
-            <i class="fas fa-arrow-left"></i> Kembali
+        <a href="/admin/pengaduan" class="btn btn-outline"> Kembali
         </a>
     </div>
 </div>

@@ -6,7 +6,9 @@
 <div style="max-width: 500px; margin: 80px auto;">
     <div class="card">
         <div style="text-align: center; margin-bottom: 30px;">
-            <i class="fas fa-user-plus" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
+            <div style="margin-bottom: 20px; text-align: center;">
+                 <img src="{{ asset('uploads/logo2.jpeg') }}" alt="Logo Sekolah" style="width: 130px; height: 130px;">
+        </div>
             <h1 style="font-size: 26px; font-weight: 700; color: var(--dark);">
                 Register Siswa
             </h1>

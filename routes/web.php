@@ -21,6 +21,8 @@ Route::middleware(['loginManual', 'roleManual:siswa'])->group(function () {
     Route::get('/siswa/pengaduan/create', [SiswaPengaduanController::class, 'create']);
     Route::post('/siswa/pengaduan/store', [SiswaPengaduanController::class, 'store']);
     Route::get('/siswa/pengaduan/{id}', [SiswaPengaduanController::class, 'show']);
+    Route::get('/siswa/pengaduan/edit/{id}', [SiswaPengaduanController::class, 'edit']);
+    Route::post('/siswa/pengaduan/update/{id}', [SiswaPengaduanController::class, 'update']);
     Route::get('/siswa/pengaduan/delete/{id}', [SiswaPengaduanController::class, 'delete']);
 });
 

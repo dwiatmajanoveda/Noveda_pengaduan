@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="navbar">
-    <a href="/" class="navbar-brand">
-        <i class="fas fa-school"></i> Pengaduan Sekolah
-    </a>
+   <div class="navbar-brand" style="display: flex; align-items: center;">
+    <img src="{{ asset('uploads/logo2.jpeg') }}" alt="Logo Sekolah" style="width: 80px; height: 80px; margin-right: 40px;">
+    <span>Pengaduan Sekolah</span>
+</div>
     <div class="navbar-nav">
-        <a href="/siswa/pengaduan" class="btn btn-outline">
-            <i class="fas fa-arrow-left"></i> Kembali
+        <a href="/siswa/pengaduan" class="btn btn-outline"> Kembali
         </a>
     </div>
 </div>
@@ -26,8 +26,7 @@
     </div>
 
     <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
-        <h3 style="color: var(--primary); margin-bottom: 15px;">
-            <i class="fas fa-heading"></i> {{ $pengaduan->judul }}
+        <h3 style="color: var(--primary); margin-bottom: 15px;"></i> {{ $pengaduan->judul }}
         </h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
             <div>

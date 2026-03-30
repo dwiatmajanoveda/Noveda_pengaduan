@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Buat Pengaduan - Pengaduan Sekolah')
+@section('title', 'Edit Pengaduan - Pengaduan Sekolah')
 
 @section('content')
 <div class="navbar">
-   <div class="navbar-brand" style="display: flex; align-items: center;">
+    <div class="navbar-brand" style="display: flex; align-items: center;">
     <img src="{{ asset('uploads/logo2.jpeg') }}" alt="Logo Sekolah" style="width: 80px; height: 80px; margin-right: 40px;">
-    <span>Pengaduan Sekolah</>
+    <span>Pengaduan Sekolah </>
 </div>
     <div class="navbar-nav">
         <a href="/siswa/pengaduan" class="btn btn-outline"> Kembali
@@ -16,19 +16,25 @@
 
 <div class="card">
     <div style="text-align: center; margin-bottom: 30px;">
-        <i class="fas fa-exclamation-triangle" style="font-size: 50px; color: var(--warning); margin-bottom: 15px;"></i>
+        <i class="fas fa-edit" style="font-size: 50px; color: var(--warning); margin-bottom: 15px;"></i>
         <h1 style="font-size: 26px; font-weight: 700; color: var(--dark);">
-            Form Pengaduan Sarana Sekolah
+            Edit Pengaduan Sarana Sekolah
         </h1>
         <p style="color: var(--gray); margin-top: 5px;">
-            Laporkan masalah sarana sekolah Anda
+            Perbarui informasi pengaduan Anda
         </p>
     </div>
 
-    <form method="POST" action="/siswa/pengaduan/store" enctype="multipart/form-data">
+    @if(session('success'))
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i> {{ session('success') }}
+        </div>
+    @endif
+
+    <form method="POST" action="/siswa/pengaduan/update/{{ $pengaduan->id }}" enctype="multipart/form-data">
         @csrf
 
-        <div class="form-group">
+       <div class="form-group">
             <label for="judul">
                 <i class="fas fa"></i> Judul Pengaduan <span style="color: var(--danger);">*</span>
             </label>
@@ -61,6 +67,9 @@
                 name="lokasi" 
                 id="lokasi" 
                 class="form-control" 
+                placeholder="Contoh: Ruang Kelas XII IPA 1, Lantai 2"
+                value="{{ $pengaduan->lokasi }}"
+                required
             >
         </div>
 
@@ -74,7 +83,7 @@
                 class="form-control" 
                 placeholder="Jelaskan secara detail masalah yang terjadi..." 
                 required
-            ></textarea>
+            >{{ $pengaduan->deskripsi }}</textarea>
         </div>
 
         <div class="form-group">
@@ -85,6 +94,12 @@
             <small style="color: var(--gray); display: block; margin-top: 5px;">
                 <i class="fas fa-info-circle"></i> Format: JPG, JPEG, PNG | Max: 2MB
             </small>
+            @if($pengaduan->foto)
+                <div style="margin-top: 10px;">
+                    <img src="{{ asset('uploads/' . $pengaduan->foto) }}" width="100" class="image-preview">
+                    <p style="font-size: 12px; color: var(--gray); margin-top: 5px;">Foto saat ini</p>
+                </div>
+            @endif
         </div>
 
         <div style="display: flex; gap: 10px; margin-top: 30px;">
@@ -92,7 +107,7 @@
                 <i class="fas fa-times"></i> Batal
             </a>
             <button type="submit" class="btn btn-primary" style="flex: 1;">
-                <i class="fas fa-paper-plane"></i> Kirim Pengaduan
+                <i class="fas fa-save"></i> Simpan Perubahan
             </button>
         </div>
     </form>
